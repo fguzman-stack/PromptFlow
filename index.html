@@ -1,1040 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="PromptFlow - 500+ Premium AI Prompts for ChatGPT, Claude, Midjourney & More. Professional prompt library for content creators, marketers, developers, and business professionals.">
-    <meta name="keywords"
-        content="AI prompts, ChatGPT prompts, Claude prompts, Midjourney prompts, AI prompt library, prompt engineering">
-    <meta name="author" content="PromptFlow">
-    <title>PromptFlow - Premium AI Prompt Library | 500+ Professional Prompts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PromptFlow — 500+ prompts profesionales para 15+ IAs: ChatGPT, Claude, Gemini, Midjourney, DALL·E, Stable Diffusion, Perplexity, Grok, Copilot, Llama, Mistral, Runway, Flux y más." />
+  <meta name="keywords" content="AI prompts, ChatGPT, Claude, Gemini, Midjourney, prompt engineering, PromptFlow" />
+  <meta name="author" content="PromptFlow" />
+  <meta property="og:title" content="PromptFlow — Premium AI Prompt Library" />
+  <meta property="og:description" content="500+ prompts premium para 15+ IAs. Filtra, busca y copia en 1 click." />
+  <meta property="og:type" content="website" />
+  <title>PromptFlow — Premium AI Prompt Library | 500+ prompts × 15 IAs</title>
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="PromptFlow - Premium AI Prompt Library">
-    <meta property="og:description" content="500+ Professional AI Prompts for ChatGPT, Claude, Midjourney & More">
-    <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.svg" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles via Vite -->
 </head>
+<body class="font-body">
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 backdrop-blur-xl bg-white/80 border-b border-slate-200">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-[64px] flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 grid place-items-center text-white font-display font-bold shadow-lg group-hover:scale-[1.02] transition">◈</span>
+        <span class="font-display font-bold text-[20px] tracking-tight">PromptFlow <span class="text-indigo-600">.</span></span>
+        <span class="hidden sm:inline-flex ml-2 text-[11px] font-bold tracking-widest uppercase bg-slate-900 text-white px-2 py-1 rounded-full">Premium</span>
+      </a>
+      <div class="hidden md:flex items-center gap-2 text-sm">
+        <a href="#library" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Librería</a>
+        <a href="#categorias" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Categorías</a>
+        <a href="#" id="nav-fav" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">❤ Favoritos <span id="fav-count" class="ml-1 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded-full">0</span></a>
+        <a href="https://github.com" target="_blank" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transition">GitHub ↗</a>
+      </div>
+      <!-- mobile fav -->
+      <button id="mobile-fav" class="md:hidden w-9 h-9 grid place-items-center rounded-xl border border-slate-200">❤ <span id="fav-count-m" class="text-xs"></span></button>
+    </div>
+  </nav>
 
-<body>
-    <div class="header">
-        <div class="header-content">
-            <h1>◆ PromptFlow</h1>
-            <p class="subtitle">500+ Premium AI Prompts for ChatGPT, Claude, Midjourney & More</p>
-            <div class="badge">▸ Professional Prompt Library for Creators & Businesses</div>
+  <!-- HERO -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600"></div>
+    <!-- blobs -->
+    <div class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-white/20 rounded-full blur-[60px] animate-blob"></div>
+    <div class="absolute -bottom-24 -left-24 w-[560px] h-[560px] bg-cyan-300/20 rounded-full blur-[60px] animate-blob animation-delay-2000"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-300/20 rounded-full blur-[70px] animate-blob animation-delay-4000"></div>
+    <!-- pattern -->
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image:url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23fff%22 fill-opacity=%221%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v6h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/svg%3E')"></div>
+
+    <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-8 items-center">
+        <div class="text-white">
+          <div class="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 text-sm reveal">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            500+ prompts · 15+ IAs · Actualizado 2026
+          </div>
+          <h1 class="font-display font-bold tracking-tight text-[32px] sm:text-[44px] lg:text-[52px] leading-[0.95] mt-4 reveal" style="transition-delay: 80ms">
+            La librería de prompts<br/>
+            <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">que sí convierte.</span>
+          </h1>
+          <p class="text-white/90 text-[16px] sm:text-lg leading-relaxed mt-4 max-w-[620px] reveal" style="transition-delay: 140ms">
+            Más allá de ChatGPT. Filtra por <b>15 modelos</b> (Claude, Gemini, Midjourney, Flux, Runway...), dificultad, categoría y tags. Copia, personaliza y lanza.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-6 reveal" style="transition-delay: 200ms">
+            <a href="#library" class="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-3 rounded-xl font-semibold hover:bg-slate-100 transition shadow-lg">Explorar librería →</a>
+            <button id="hero-copy" class="inline-flex items-center gap-2 glass px-5 py-3 rounded-xl font-semibold hover:bg-white/20 transition">▸ Copiar prompt destacado</button>
+          </div>
+          <!-- trusted by -->
+          <div class="flex items-center gap-3 mt-6 text-white/80 text-sm reveal" style="transition-delay: 260ms">
+            <span class="opacity-80">Compatible con:</span>
+            <span class="inline-flex items-center gap-1.5 flex-wrap">
+              <span class="glass px-2.5 py-1 rounded-full">ChatGPT</span>
+              <span class="glass px-2.5 py-1 rounded-full">Claude</span>
+              <span class="glass px-2.5 py-1 rounded-full">Midjourney</span>
+              <span class="glass px-2.5 py-1 rounded-full">+12 más</span>
+            </span>
+          </div>
         </div>
+
+        <!-- hero card -->
+        <div class="relative reveal" style="transition-delay: 180ms">
+          <div class="absolute -inset-3 bg-white/20 blur-2xl rounded-[28px]"></div>
+          <div class="relative bg-white rounded-[20px] p-5 sm:p-6 shadow-2xl">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold tracking-widest uppercase text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Prompt destacado</span>
+              <span class="text-xs text-slate-500">★ 4.9 · usado 12k veces</span>
+            </div>
+            <h3 class="font-semibold text-slate-900 mt-3">Landing Page AIDA que convierte</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Escribe copy con fórmula AIDA: hero potente, problema → deseo, prueba social, FAQ y urgencia. Listo para pegar en Claude o ChatGPT.</p>
+            <div class="flex gap-2 mt-4 text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-slate-900 text-white">ChatGPT</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-700">Avanzado</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100">aida</span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mt-6">
+              <div class="rounded-xl bg-slate-50 p-3 text-center">
+                <div class="text-lg font-bold text-slate-900" data-count="500">0</div>
+                <div class="text-[11px] uppercase tracking-widest text-slate-500">Prompts</div>
+              </div>
+              <div class="rounded-xl bg-indigo-50 p-3 text-center">
+                <div class="text-lg font-bold text-indigo-700" data-count="15">0</div>
+                <div class="text-[11px] uppercase tracking-widest text-indigo-600">IAs</div>
+              </div>
+              <div class="rounded-xl bg-fuchsia-50 p-3 text-center">
+                <div class="text-lg font-bold text-fuchsia-700" data-count="8">0</div>
+                <div class="text-[11px] uppercase tracking-widest text-fuchsia-600">Categorías</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4 reveal">
+        <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white grid place-items-center">◆</span>
+        <div><div class="text-sm text-slate-500">Total prompts</div><div class="font-bold text-lg" id="stat-prompts">0</div></div>
+        <span class="ml-auto text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-full">+ live</span>
+      </div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4 reveal" style="transition-delay: 80ms">
+        <span class="w-10 h-10 rounded-xl bg-fuchsia-600 text-white grid place-items-center">◇</span>
+        <div><div class="text-sm text-slate-500">Modelos soportados</div><div class="font-bold text-lg">15+</div></div>
+        <span class="ml-auto text-slate-500 text-xs">de 5 → 15</span>
+      </div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4 reveal" style="transition-delay: 140ms">
+        <span class="w-10 h-10 rounded-xl bg-cyan-500 text-white grid place-items-center">◎</span>
+        <div><div class="text-sm text-slate-500">Copias 1-click</div><div class="font-bold text-lg">∞</div></div>
+        <span class="ml-auto text-xs bg-slate-900 text-white px-2 py-1 rounded-full">offline-ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY -->
+  <main id="library" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Advanced Search & Filters -->
+    <section class="bg-white rounded-[20px] border border-slate-200 shadow-sm p-4 sm:p-6 reveal">
+      <div class="flex flex-col lg:flex-row gap-3 lg:items-center justify-between">
+        <div class="relative flex-1">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">⌕</span>
+          <input id="search-input" type="text" placeholder="Busca por título, tag o contenido… ej: 'react', 'midjourney', 'seo'" class="w-full pl-9 pr-9 py-3 rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition" />
+          <button id="clear-search" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 grid place-items-center rounded-lg bg-slate-900 text-white text-xs opacity-0 pointer-events-none transition">✕</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-fav-filter" class="px-4 py-3 rounded-xl border-2 border-slate-200 bg-white font-semibold text-sm hover:border-pink-300 hover:text-pink-600 transition">♡ Solo favoritos</button>
+          <button id="btn-clear-all" class="px-4 py-3 rounded-xl bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition">Limpiar</button>
+        </div>
+      </div>
+
+      <!-- filters grid -->
+      <div class="grid lg:grid-cols-[1.2fr_1fr_1fr] gap-4 mt-4">
+        <div>
+          <label class="text-xs font-bold tracking-widest uppercase text-slate-500">Categoría</label>
+          <div id="category-chips" class="flex flex-wrap gap-2 mt-2"></div>
+          <!-- hidden select for accessibility -->
+          <select id="category-filter" class="hidden"><option value="">Todas</option></select>
+        </div>
+        <div>
+          <label class="text-xs font-bold tracking-widest uppercase text-slate-500">Modelo IA</label>
+          <div class="relative mt-2">
+            <button id="model-dropdown-btn" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-sm">
+              <span id="model-dropdown-label">Todas las IAs (15)</span><span>▾</span>
+            </button>
+            <div id="model-dropdown" class="hidden absolute z-20 mt-2 w-full bg-white border border-slate-200 rounded-xl shadow-xl max-h-[320px] overflow-auto p-2"></div>
+          </div>
+          <select id="model-filter" class="hidden"><option value="">Todos</option></select>
+        </div>
+        <div>
+          <label class="text-xs font-bold tracking-widest uppercase text-slate-500">Dificultad & Orden</label>
+          <div class="flex gap-2 mt-2">
+            <select id="difficulty-filter" class="flex-1 px-3 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-sm">
+              <option value="">Todos los niveles</option>
+              <option value="Beginner">Principiante</option>
+              <option value="Intermediate">Intermedio</option>
+              <option value="Advanced">Avanzado</option>
+            </select>
+            <select id="sort-filter" class="flex-1 px-3 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-sm">
+              <option value="popular">★ Popular</option>
+              <option value="newest">▹ Más nuevo</option>
+              <option value="az">A–Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- tag cloud + active filters -->
+      <div class="flex flex-wrap items-center gap-2 mt-4">
+        <span class="text-xs font-semibold text-slate-500">Tags rápidos:</span>
+        <div id="tag-cloud" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div id="active-filters" class="flex flex-wrap gap-2 mt-3"></div>
+      <div id="results-info" class="text-sm text-slate-500 mt-3 font-medium"></div>
+    </section>
+
+    <!-- toolbar -->
+    <div class="flex flex-wrap items-center gap-2 mt-4 reveal">
+      <button data-sort="popular" class="btn-toolbar active px-4 py-2 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold hover:border-indigo-500 hover:text-indigo-600 transition">★ Más popular</button>
+      <button data-sort="newest" class="btn-toolbar px-4 py-2 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold hover:border-indigo-500 hover:text-indigo-600 transition">▹ Más nuevo</button>
+      <button data-sort="az" class="btn-toolbar px-4 py-2 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold hover:border-indigo-500 hover:text-indigo-600 transition">A–Z</button>
+      <span class="mx-2 h-6 w-px bg-slate-200 hidden sm:block"></span>
+      <button id="btn-export" class="ml-auto sm:ml-0 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition">↓ Exportar CSV</button>
+      <button id="btn-random" class="px-4 py-2 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold hover:border-fuchsia-300 transition">🎲 Sorpréndeme</button>
     </div>
 
-    <div class="container">
-        <!-- Stats -->
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-label">Total Prompts</div>
-                <div class="stat-number" id="total-prompts">500+</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Categories</div>
-                <div class="stat-number" id="total-categories">7</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">AI Models Supported</div>
-                <div class="stat-number">5+</div>
-            </div>
-        </div>
-
-        <!-- Search & Filters -->
-        <div class="search-section">
-            <div class="search-box">
-                <input type="text" id="search-input"
-                    placeholder="○ Search prompts... (e.g., 'social media', 'code', 'marketing')">
-            </div>
-
-            <div class="filters">
-                <div class="filter-group">
-                    <label>□ Category</label>
-                    <select id="category-filter">
-                        <option value="">All Categories</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>▪ AI Model</label>
-                    <select id="model-filter">
-                        <option value="">All Models</option>
-                        <option value="ChatGPT">ChatGPT</option>
-                        <option value="Claude">Claude</option>
-                        <option value="Midjourney">Midjourney</option>
-                        <option value="DALL-E">DALL-E</option>
-                        <option value="Gemini">Gemini</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>◊ Difficulty</label>
-                    <select id="difficulty-filter">
-                        <option value="">All Levels</option>
-                        <option value="Beginner">Beginner</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Advanced">Advanced</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="results-info" id="results-info"></div>
-        </div>
-
-        <!-- Toolbar -->
-        <div class="toolbar">
-            <button class="btn-toolbar active" onclick="sortBy('newest')">▹ Newest First</button>
-            <button class="btn-toolbar" onclick="sortBy('popular')">★ Most Popular</button>
-            <button class="btn-toolbar" onclick="exportAll()">↓ Export to CSV</button>
-        </div>
-
-        <!-- Prompts Grid -->
-        <div class="prompts-grid" id="prompts-container"></div>
-
-        <!-- Empty State -->
-        <div class="empty-state" id="empty-state" style="display: none;">
-            <p>🔍 No prompts found</p>
-            <p>Try adjusting your filters or search terms</p>
-        </div>
+    <!-- grid -->
+    <section id="prompts-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-6"></section>
+    <div id="empty-state" class="hidden text-center py-16">
+      <div class="w-16 h-16 mx-auto grid place-items-center rounded-2xl bg-slate-100 text-xl">🔎</div>
+      <p class="mt-4 font-semibold">Sin resultados</p>
+      <p class="text-sm text-slate-500">Prueba a limpiar filtros o buscar otro término.</p>
+      <button id="empty-clear" class="mt-4 px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-semibold">Limpiar filtros</button>
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="prompt-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Prompt</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-text" id="modal-text"></div>
-            <div class="modal-actions">
-                <button class="btn-primary" onclick="copyFromModal()">▸ Copy to Clipboard</button>
-                <button class="btn-primary btn-secondary" onclick="closeModal()">Close</button>
-            </div>
-        </div>
+    <!-- pagination / load more -->
+    <div class="flex justify-center mt-8">
+      <button id="load-more" class="hidden px-6 py-3 rounded-xl border-2 border-slate-200 bg-white font-semibold hover:border-indigo-400 transition">Cargar más</button>
     </div>
-
-    <script>
-        // ==============================================
-        // PROMPT DATABASE - 500+ PREMIUM AI PROMPTS
-        // ==============================================
-
-        const PROMPTS_DATA = [
-            // ========== MARKETING & SALES (70 prompts) ==========
-            {
-                id: 1, title: "LinkedIn Lead Generation Post", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Write a LinkedIn post about [YOUR_TOPIC] that includes:\n- A compelling hook (first line)\n- 2-3 key
-    benefits\n- A call-to-action asking for comments\n- Relevant hashtags\nMake it professional but conversational.`},
-
-            {
-                id: 2, title: "Email Subject Line Generator", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Generate 5 attention-grabbing email subject lines for [YOUR_PRODUCT/SERVICE] that:\n- Create curiosity or
-    urgency\n- Are 50 characters or less\n- Include power words\n- Would make someone want to open the email\nInclude
-    variations for A/B testing.`},
-
-            {
-                id: 3, title: "Cold Email Sales Pitch", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a cold email pitch for [YOUR_PRODUCT] to [TARGET_AUDIENCE] that:\n- Opens with a personalized hook
-    about their pain point\n- Presents your solution in 2-3 sentences\n- Includes one specific benefit\n- Has a clear
-    call-to-action\n- Closes with a question\nKeep it under 100 words.`},
-
-            {
-                id: 4, title: "30-Day Social Media Content Calendar", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a 30-day social media content plan for [YOUR_BRAND] that includes:\n- 4 posts per week across
-    [PLATFORMS]\n- Mix of content types (educational, promotional, entertaining)\n- Suggested captions with emojis\n-
-    Best posting times\n- Engagement strategies\nFormat as a calendar with clear dates and times.`},
-
-            {
-                id: 5, title: "Product Launch Marketing Strategy", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Develop a comprehensive marketing strategy for launching [PRODUCT_NAME] that includes:\n- Pre-launch phase
-    activities (timeline)\n- Launch day tactics\n- Post-launch retention strategies\n- Target audience segmentation\n-
-    Channel mix recommendations (email, social, paid ads, etc.)\n- KPIs to track success\n- Budget allocation by
-    channel`},
-
-            {
-                id: 6, title: "Influencer Outreach Template", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Write a professional outreach email to [INFLUENCER_NAME] offering a collaboration:\n- Personalize with
-    details about their content\n- Explain why the partnership would be mutually beneficial\n- Propose 2-3 collaboration
-    ideas\n- Include media kit/product samples offer\n- Add clear contact information\n- Keep tone friendly but
-    professional`},
-
-            {
-                id: 7, title: "Customer Testimonial Request", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a template email asking satisfied customers for video testimonials that:\n- Thanks them for their
-    business\n- Explains why testimonials help other customers\n- Provides 3-5 questions for them to answer on camera\n-
-    Offers incentive (discount, free product, etc.)\n- Includes video submission instructions\n- Keeps tone warm and
-    appreciative`},
-
-            {
-                id: 8, title: "SEO Product Description Writer", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Write an SEO-optimized product description for [PRODUCT_NAME] that:\n- Includes primary keyword in first 100
-    words\n- Describes benefits (not just features)\n- Uses power words and persuasive language\n- Includes 2-3
-    secondary keywords naturally\n- Has clear formatting with bullet points\n- Ends with a strong CTA\n- 200-300 words
-    total`},
-
-            {
-                id: 9, title: "Video Sales Page Script", category: "Marketing & Sales", model: "ChatGPT", difficulty: "Advanced",
-                text: `Write a compelling sales video script for [PRODUCT/SERVICE] that:\n- Opens with a compelling problem
-    statement\n- Shows relatable customer scenario\n- Presents solution and key benefits\n- Provides social proof
-    (testimonials, results)\n- Addresses common objections\n- Creates urgency\n- Ends with clear CTA\n- Approximately
-    2-3 minutes when spoken`},
-
-            {
-                id: 10, title: "Retargeting Ad Copy Creator", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create 5 variations of retargeting ad copy for [PRODUCT] for people who:\n- Visited your website but didn't
-    buy\n- Added item to cart but didn't checkout\n- Downloaded free resource\nEach variation should:\n- Reference their
-    previous action\n- Offer incentive (discount, bonus, free shipping)\n- Create urgency\n- Include strong CTA`},
-
-            {
-                id: 11, title: "Facebook Ad Campaign Builder", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design a complete Facebook ad campaign for [PRODUCT/SERVICE]:\n- Campaign objective and goal\n- 3 audience
-    segments with targeting details\n- 5 ad variations (headlines + copy + CTA)\n- Budget recommendations\n- A/B testing
-    plan\n- Success metrics\n- Optimization strategy\nInclude creative brief for visuals.`},
-
-            {
-                id: 12, title: "Landing Page Copywriting Formula", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Write high-converting landing page copy for [OFFER] using the AIDA formula:\n- Attention: Powerful headline +
-    subheadline\n- Interest: Compelling problem statement\n- Desire: 3-5 benefit-focused sections\n- Action: Multiple
-    CTAs throughout\nInclude:\n- Hero section copy\n- Social proof section\n- FAQ section (5 questions)\n- Urgency
-    elements`},
-
-            {
-                id: 13, title: "Instagram Story Sequence", category: "Marketing & Sales", model: "ChatGPT", difficulty: "Beginner",
-                text: `Create a 10-story Instagram sequence promoting [PRODUCT/SERVICE]:\n- Story 1: Hook/teaser\n- Stories 2-3:
-    Problem awareness\n- Stories 4-6: Solution presentation\n- Stories 7-8: Social proof\n- Story 9: Offer reveal\n-
-    Story 10: Strong CTA\nInclude text overlay suggestions, sticker ideas, and swipe-up copy.`},
-
-            {
-                id: 14, title: "Twitter Thread for Virality", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Write a viral Twitter thread about [TOPIC] with 10-15 tweets:\n- Tweet 1: Hook that stops scrolling\n- Tweets
-    2-4: Build curiosity\n- Tweets 5-12: Value bombs with insights\n- Tweet 13-14: CTA and summary\n- Final tweet: Ask
-    for RT/engagement\nUse numbers, emojis, and line breaks for readability.`},
-
-            {
-                id: 15, title: "Customer Persona Development", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create a detailed customer persona for [PRODUCT/INDUSTRY]:\n- Demographics (age, location, income, job
-    title)\n- Psychographics (values, interests, lifestyle)\n- Goals and aspirations\n- Pain points and challenges\n-
-    Buying behaviors\n- Preferred channels\n- Objections to purchase\n- Messaging that resonates\nProvide 2-3 persona
-    variations.`},
-
-            // Continue with more Marketing & Sales prompts...
-            {
-                id: 16, title: "TikTok Marketing Campaign", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Plan a TikTok marketing campaign for [BRAND/PRODUCT]:\n- 10 video concepts with trending sounds\n- Hook
-    formulas for first 3 seconds\n- Hashtag strategy (#trending + #niche)\n- Posting schedule (best times)\n- Engagement
-    tactics\n- Influencer collaboration ideas\n- Performance metrics to track`},
-
-            {
-                id: 17, title: "Email Welcome Sequence", category: "Marketing & Sales", model: "ChatGPT", difficulty: "Advanced",
-                text: `Create a 5-email welcome sequence for new subscribers:\nEmail 1: Welcome + set expectations\nEmail 2: Share
-    brand story + value proposition\nEmail 3: Offer lead magnet or free resource\nEmail 4: Social proof +
-    testimonials\nEmail 5: Special offer + CTA\nInclude subject lines, preview text, and send timing.`},
-
-            {
-                id: 18, title: "Google Ads Copy Generator", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Write Google Search Ads for [KEYWORD/PRODUCT]:\n- 5 headline variations (max 30 chars each)\n- 3 description
-    variations (max 90 chars each)\n- Include keywords naturally\n- Highlight unique value propositions\n- Add
-    compelling CTAs\n- Extension suggestions (sitelinks, callouts)\nOptimize for Quality Score.`},
-
-            {
-                id: 19, title: "Brand Voice Guidelines", category: "Marketing & Sales", model: "ChatGPT", difficulty: "Advanced",
-                text: `Develop brand voice guidelines for [COMPANY]:\n- Brand personality (3-5 adjectives)\n- Tone across different
-    contexts\n- Language dos and don'ts\n- Example phrases aligned with brand\n- Counter-examples (what to avoid)\n-
-    Application across channels\n- Sample copy for different scenarios\nInclude mood board description.`},
-
-            {
-                id: 20, title: "Webinar Promotion Strategy", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create a complete webinar promotion plan for [TOPIC]:\n- Landing page copy\n- 3-email promotion sequence\n-
-    Social media posts (5+ platforms)\n- Reminder email templates\n- Post-webinar follow-up sequence\n- Partner outreach
-    template\n- Countdown messaging\nInclude suggested graphics and CTAs.`},
-
-            // Continuing with more categories would make this too long...
-            // I'll add representative samples from each category to reach 500+
-
-            // ========== BUSINESS & PRODUCTIVITY (75 prompts) ==========
-            {
-                id: 101, title: "Business Plan Template", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create a comprehensive business plan for [BUSINESS_NAME] that includes:\n1. Executive Summary (overview of
-    business)\n2. Company Description (mission, vision, values)\n3. Market Analysis (industry trends, target market)\n4.
-    Organization & Management structure\n5. Service/Product Line description\n6. Marketing and Sales Strategy\n7.
-    Financial Projections (3 years)\n8. Funding Requirements\n9. Appendix (resumes, contracts, etc.)\nInclude specific
-    numbers and realistic projections.`},
-
-            {
-                id: 102, title: "SWOT Analysis Framework", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Conduct a SWOT analysis for [COMPANY/PROJECT]:\nStrengths:\n- [List 5-7 internal strengths]\nWeaknesses:\n-
-    [List 5-7 internal weaknesses]\nOpportunities:\n- [List 5-7 external opportunities]\nThreats:\n- [List 5-7 external
-    threats]\nThen provide 3-5 strategic recommendations based on the analysis.`},
-
-            {
-                id: 103, title: "Project Management Checklist", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a detailed project management checklist for [PROJECT_NAME] with:\n- Project initiation phase (goals,
-    scope, stakeholders)\n- Planning phase (timeline, budget, resources)\n- Execution phase (task breakdown,
-    assignments)\n- Monitoring phase (milestones, KPIs)\n- Closing phase (deliverables, feedback)\nInclude realistic
-    timelines and responsible parties.`},
-
-            {
-                id: 104, title: "Financial Forecast Builder", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create a 12-month financial forecast for [BUSINESS] including:\n- Revenue projections (monthly breakdown)\n-
-    Expense categories and estimates\n- Cash flow projections\n- Break-even analysis\n- Profit & loss statement\n- Key
-    financial ratios\n- Assumptions and notes\nFormat for easy updating as actual data comes in.`},
-
-            {
-                id: 105, title: "Meeting Agenda Template", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a structured meeting agenda for [MEETING_TYPE]:\n- Meeting objectives (2-3 clear goals)\n- Attendees
-    and their roles\n- Time allocation per agenda item\n- Discussion topics with background info\n- Decision points
-    needed\n- Action items with owners\n- Next steps and follow-up date\nInclude time for Q&A and buffer time.`},
-
-            {
-                id: 106, title: "OKR Setting Framework", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create OKRs for [TEAM/DEPARTMENT] for [QUARTER/YEAR]:\nObjective 1: [Clear, inspirational goal]\n - Key
-    Result 1: [Measurable outcome, 0-1.0 scale]\n - Key Result 2: [Measurable outcome]\n - Key Result 3: [Measurable
-    outcome]\n\nRepeat for 3-5 objectives. Ensure OKRs are:\n- Aligned with company strategy\n- Ambitious but
-    achievable\n- Measurable and time-bound\n- Focused on outcomes, not activities`},
-
-            {
-                id: 107, title: "Time Management Audit", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Conduct a time management audit for [ROLE/INDIVIDUAL]:\n- Time tracking template (hourly breakdown)\n-
-    Activity categorization (strategic, tactical, administrative)\n- Time waste identification\n- Priority matrix
-    (urgent/important)\n- Delegation opportunities\n- Automation possibilities\n- Weekly optimization plan\n-
-    Productivity metrics\nProvide actionable recommendations.`},
-
-            {
-                id: 108, title: "Employee Onboarding Checklist", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Design a comprehensive onboarding checklist for [POSITION]:\nWeek 1: Setup and orientation\nWeek 2: Training
-    and shadowing\nWeek 3-4: Hands-on projects\nWeek 5-8: Increasing responsibility\n\nInclude:\n- IT setup
-    requirements\n- Training modules\n- Key contacts\n- 30/60/90 day goals\n- Check-in schedule\n- Resources and
-    documentation`},
-
-            {
-                id: 109, title: "Crisis Management Plan", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Develop a crisis management plan for [COMPANY/SCENARIO]:\n- Crisis identification and classification\n-
-    Response team roles and responsibilities\n- Communication protocols\n- Stakeholder notification templates\n- Media
-    response strategies\n- Recovery procedures\n- Prevention measures\n- Post-crisis analysis framework\nInclude
-    decision trees and contact lists.`},
-
-            {
-                id: 110, title: "Performance Review Template", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a performance review template for [POSITION]:\n- Self-assessment section\n- Goal achievement review\n-
-    Skills and competencies evaluation\n- Strengths and accomplishments\n- Areas for improvement\n- Professional
-    development goals\n- Feedback from peers/manager\n- Rating scale and definitions\n- Action plan for next
-    period\nKeep it constructive and forward-looking.`},
-
-            // ========== CONTENT CREATION (90 prompts) ==========
-            {
-                id: 201, title: "Blog Post Outline Creator", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a detailed outline for a blog post titled "[BLOG_TITLE]" that:\n- Includes SEO-optimized headings (H1,
-    H2, H3)\n- Has 1,500-2,000 word structure\n- Starts with engaging introduction\n- Has 3-5 main sections with
-    subpoints\n- Includes call-to-action\n- Suggests images/graphics locations\n- Targets [TARGET_KEYWORD]\nAdd
-    estimated reading time and key takeaways.`},
-
-            {
-                id: 202, title: "YouTube Video Script", category: "Content Creation", model: "ChatGPT", difficulty: "Intermediate",
-                text: `Write a YouTube video script for "[VIDEO_TITLE]" that:\n- Opens with hook (first 3 seconds are critical)\n-
-    Previews video content\n- Includes 3 main sections with clear transitions\n- Uses conversational language\n-
-    Includes timestamps for chapters\n- Adds B-roll suggestions\n- Ends with call-to-action (like, subscribe,
-    comment)\n- Approximately [LENGTH] minutes when spoken\nInclude annotations and special effects cues.`},
-
-            {
-                id: 203, title: "Podcast Episode Planner", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Plan a podcast episode titled "[EPISODE_TITLE]" with:\n- Hook/opening story (grab attention in 30 seconds)\n-
-    Guest/co-host introduction\n- 3-4 main discussion topics with talking points\n- Listener questions/Q&A segment\n-
-    Actionable takeaways for listeners\n- Call-to-action (subscribe, leave review, visit website)\n- Sponsor integration
-    opportunities\n- Estimated runtime and chapter breakdowns\nInclude discussion questions for smooth flow.`},
-
-            {
-                id: 204, title: "Newsletter Content Template", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Write a weekly newsletter issue with:\n- Attention-grabbing subject line\n- Personal opening (2-3
-    sentences)\n- Main article/insight (400-500 words)\n- 3 additional quick tips or links\n- Engagement question for
-    readers\n- Clear call-to-action\n- Signature/about section\nMake it scannable with clear sections and short
-    paragraphs.`},
-
-            {
-                id: 205, title: "Instagram Caption Generator", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create 5 Instagram captions for a post about [TOPIC] that:\n- Each uses different tone (inspiring, funny,
-    educational, storytelling, promotional)\n- Include relevant hashtags (10-15)\n- Add call-to-action (ask question,
-    encourage save/share)\n- Use emojis strategically\n- Are optimized for engagement\n- First line is compelling
-    (appears before "more")\nInclude variations for Stories and Reels.`},
-
-            {
-                id: 206, title: "Long-Form Article Writer", category: "Content Creation", model: "ChatGPT", difficulty: "Advanced",
-                text: `Write a comprehensive 3,000+ word article about "[TOPIC]" that:\n- Includes original research/data\n- Has
-    well-researched sources\n- Follows journalistic style\n- Includes expert quotes\n- Has data visualization
-    suggestions\n- Provides actionable insights\n- Addresses counterarguments\n- Includes citations and references\n-
-    Optimized for SEO\nStructure with clear sections and compelling narrative.`},
-
-            {
-                id: 207, title: "Case Study Writer", category: "Content Creation", model: "ChatGPT", difficulty: "Advanced",
-                text: `Write a compelling case study for [CLIENT_NAME] using:\n- Executive summary (results upfront)\n-
-    Background/challenge description\n- Solution implemented (detailed)\n- Metrics and results (specific numbers)\n-
-    Customer testimonial\n- Key learnings and insights\n- Before/after comparison\n- Recommendations for similar
-    situations\n- Call-to-action\nInclude visuals, quotes, and data points throughout.`},
-
-            {
-                id: 208, title: "Ebook Chapter Structure", category: "Content Creation", model: "ChatGPT", difficulty: "Advanced",
-                text: `Create a chapter outline for an ebook about [TOPIC]:\n- Chapter title and subtitle\n- Learning objectives
-    (3-5)\n- Introduction hook\n- Main sections (4-6) with subsections\n- Examples and case studies\n- Actionable
-    exercises or worksheets\n- Chapter summary\n- Transition to next chapter\n- Word count: 3,000-5,000\nEnsure flow and
-    engagement throughout.`},
-
-            {
-                id: 209, title: "Press Release Template", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Write a press release for [NEWS/ANNOUNCEMENT]:\n- Attention-grabbing headline\n- City, Date format\n- Strong
-    opening paragraph (who, what, when, where, why)\n- 2-3 supporting paragraphs with details\n- Quote from company
-    spokesperson\n- Company boilerplate\n- Contact information\n- Call-to-action\nKeep under 500 words, newsworthy
-    angle, AP style.`},
-
-            {
-                id: 210, title: "Video Content Calendar", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a 90-day video content calendar for [PLATFORM/CHANNEL]:\n- 3 videos per week\n- Content pillars
-    (education, entertainment, inspiration)\n- Video titles and descriptions\n- Thumbnail concepts\n- Publishing
-    schedule\n- Series ideas\n- Seasonal/trending topics\n- Cross-promotion strategy\nBalance evergreen and timely
-    content.`},
-
-            // ========== SOFTWARE DEVELOPMENT (100 prompts) ==========
-            {
-                id: 301, title: "React Component Generator", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Generate a React component for [COMPONENT_TYPE]:\n- Name: [ComponentName]\n- Props: [list required props]\n-
-    State management: [describe state]\n- Styling: [CSS/Tailwind/styled-components]\n- Features: [list required
-    features]\n\nInclude:\n- Functional component with hooks\n- PropTypes or TypeScript types\n- Error handling\n-
-    Accessibility attributes\n- Comments explaining logic\n- Example usage\n- Unit test suggestions`},
-
-            {
-                id: 302, title: "Database Schema Designer", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design a database schema for [APPLICATION_TYPE] with:\n- Tables/Collections required\n- Fields for each table
-    (with data types)\n- Primary and foreign keys\n- Indexes for optimization\n- Relationships between tables\n-
-    Constraints and validations\n- Sample queries for common operations\n- Scalability considerations\n\nProvide both
-    SQL and NoSQL variations if applicable.`},
-
-            {
-                id: 303, title: "API Documentation Generator", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Document API endpoints for [API_NAME]:\n- Base URL and authentication method\n- For each endpoint include:\n
-    - HTTP method (GET, POST, etc.)\n - Endpoint path\n - Description\n - Required parameters\n - Request body example\n
-    - Response body example\n - Error codes and meanings\n - Rate limiting info\n - Code examples (cURL, JavaScript,
-    Python)\nFormat as OpenAPI/Swagger spec.`},
-
-            {
-                id: 304, title: "Git Workflow Guide", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a Git workflow guide for [PROJECT_NAME] team:\n- Branch naming conventions\n- Commit message format\n-
-    Pull request process\n- Code review checklist\n- Merge strategy (rebase vs. merge)\n- Release process\n- Hotfix
-    procedure\n- Tagging strategy for versions\n- Conflict resolution guidelines\n- Team collaboration best practices`},
-
-            {
-                id: 305, title: "Error Handling Pattern", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Implement comprehensive error handling for [APPLICATION]:\n- Input validation strategy\n- Error
-    classification system\n- Try-catch block patterns\n- Custom error classes\n- Logging strategy\n- Error messages
-    (user-friendly)\n- Error recovery mechanisms\n- API error response format\n- Frontend error UI/UX\n- Testing error
-    scenarios\nInclude code examples in [LANGUAGE].`},
-
-            {
-                id: 306, title: "Code Review Checklist", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a code review checklist for [LANGUAGE/FRAMEWORK]:\n- Code readability and style\n- Performance
-    considerations\n- Security vulnerabilities\n- Memory leaks and optimization\n- Error handling\n- Test coverage\n-
-    Documentation\n- Accessibility compliance\n- Browser/version compatibility\n- Backwards compatibility\n- Code
-    reusability\n- Naming conventions adherence`},
-
-            {
-                id: 307, title: "API Rate Limiting Implementation", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design rate limiting for [API_NAME]:\n- Rate limit algorithm (token bucket, sliding window)\n- Limits per
-    tier (free, pro, enterprise)\n- Time windows (per second, minute, hour, day)\n- Response headers (X-RateLimit-*)\n-
-    Error responses (429 status)\n- Whitelist/blacklist logic\n- Redis implementation\n- Monitoring and alerts\n-
-    Documentation for users\nProvide code in [LANGUAGE].`},
-
-            {
-                id: 308, title: "Unit Test Generator", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Generate unit tests for [FUNCTION/CLASS] in [LANGUAGE]:\n- Test happy path scenarios\n- Edge cases\n- Error
-    conditions\n- Boundary values\n- Mock external dependencies\n- Assertion strategies\n- Setup and teardown\n-
-    Describe blocks with clear names\n- Test coverage report\nUse [TESTING_FRAMEWORK] syntax.`},
-
-            {
-                id: 309, title: "Dockerfile Optimization", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create an optimized Dockerfile for [APPLICATION]:\n- Multi-stage build\n- Minimal base image\n- Layer caching
-    strategy\n- Security best practices\n- Environment variables\n- Health checks\n- Non-root user\n- .dockerignore
-    file\n- Build arguments\n- Image size optimization\nInclude docker-compose.yml if needed.`},
-
-            {
-                id: 310, title: "GraphQL Schema Design", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design a GraphQL schema for [DOMAIN]:\n- Type definitions\n- Query operations\n- Mutation operations\n-
-    Subscription operations (if applicable)\n- Input types\n- Enums\n- Interfaces\n- Resolvers structure\n- DataLoader
-    for N+1 prevention\n- Pagination strategy\n- Error handling\nInclude sample queries and mutations.`},
-
-            // ========== DESIGN & CREATIVITY (60 prompts) ==========
-            {
-                id: 401, title: "Logo Concept Brainstorm", category: "Design & Creativity", model: "Midjourney", difficulty:
-                    "Beginner",
-                text: `Generate logo concept ideas for [BRAND_NAME]:\n- Brand type: [product/service]\n- Target audience:
-    [description]\n- Brand personality: [3-5 adjectives]\n- Color preferences: [colors or open to suggestions]\n- Style:
-    [modern/classic/playful/minimalist/etc]\n\nProvide:\n- 5 distinct logo concepts with descriptions\n- Symbolism and
-    meaning for each\n- Color palette recommendations\n- Font pairing suggestions\n- Alternative versions (horizontal,
-    icon, monogram)\n- Brand application examples`},
-
-            {
-                id: 402, title: "Brand Identity Guidelines", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create comprehensive brand guidelines for [BRAND_NAME]:\n- Logo usage rules and clear space\n- Color palette
-    (primary, secondary, accent)\n- Typography (fonts and sizing)\n- Photography style and tone\n- Illustration style\n-
-    Icon guidelines\n- Voice and tone guidelines\n- Brand story and mission\n- Do's and don'ts\n- Application examples
-    (business cards, website, social media)\nInclude visual specifications and measurements.`},
-
-            {
-                id: 403, title: "UI/UX Design System", category: "Design & Creativity", model: "ChatGPT", difficulty: "Advanced",
-                text: `Design a design system for [APPLICATION]:\n- Color system (semantic colors, contrast ratios)\n- Typography
-    scale (sizes, weights, line heights)\n- Spacing/grid system\n- Button styles and states\n- Form components (inputs,
-    selects, checkboxes)\n- Cards and containers\n- Navigation patterns\n- Icons library\n- Animations and
-    transitions\n- Accessibility guidelines (WCAG)\n- Component documentation with code samples`},
-
-            {
-                id: 404, title: "Midjourney Prompt Formula", category: "Design & Creativity", model: "Midjourney", difficulty:
-                    "Intermediate",
-                text: `Create a Midjourney prompt for [IMAGE_TYPE]:\nStructure: [Subject] [Environment] [Mood/Atmosphere] [Style]
-    [Technical Parameters]\n\nExample:\n"[SUBJECT], [lighting], [environment details], [artistic style], [camera angle],
-    [color palette], --ar 16:9 --v 5 --q 2"\n\nProvide 3 variations with:\n- Different artistic styles\n- Lighting
-    scenarios\n- Camera angles\n- Technical parameters explained`},
-
-            {
-                id: 405, title: "Website Color Palette Generator", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Generate a color palette for [INDUSTRY/BRAND] website:\n- Primary color (main brand color)\n- Secondary color
-    (supporting)\n- Accent colors (2-3 for CTAs, highlights)\n- Neutral colors (backgrounds, text)\n- Success, warning,
-    error states\n\nFor each color provide:\n- Hex codes\n- RGB values\n- Usage guidelines\n- Accessibility contrast
-    ratios\n- Emotional association\n- Example applications`},
-
-            {
-                id: 406, title: "Typography Pairing Guide", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Recommend typography pairings for [PROJECT_TYPE]:\n- Heading font with justification\n- Body font with
-    justification\n- Accent/display font (optional)\n- Font weights to use\n- Size scale (h1-h6, body, small)\n- Line
-    height recommendations\n- Letter spacing adjustments\n- Fallback fonts\n- Loading strategy\n- Accessibility
-    considerations\nProvide 3 different pairing options.`},
-
-            {
-                id: 407, title: "Icon Set Specification", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Design specifications for custom icon set:\n- Icon style (outline, filled, flat, 3D)\n- Grid system (24x24,
-    32x32, etc.)\n- Stroke width consistency\n- Corner radius standards\n- Padding/safe area\n- Color usage rules\n-
-    Size variations needed\n- File format requirements\n- Naming conventions\n- Icons needed (list 20-30)\nInclude
-    design principles and examples.`},
-
-            {
-                id: 408, title: "Social Media Template Design", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Design social media templates for [BRAND]:\n- Platform dimensions (Instagram, Facebook, Twitter, LinkedIn)\n-
-    Brand elements integration\n- Typography hierarchy\n- Color scheme application\n- Image/graphic placement zones\n-
-    CTA button design\n- Story/post/cover variations\n- Canva/Figma template structure\n- Reusable components\nProvide 5
-    template concepts.`},
-
-            {
-                id: 409, title: "Motion Design Storyboard", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Create a motion design storyboard for [ANIMATION_TYPE]:\n- Scene breakdown (6-10 scenes)\n- Timing and
-    duration for each scene\n- Transition types\n- Animation style (2D, 3D, kinetic typography)\n- Color palette and
-    mood\n- Sound/music recommendations\n- Key frames description\n- Easing functions\n- Final deliverable specs\nTotal
-    duration: [SECONDS].`},
-
-            {
-                id: 410, title: "Mobile App Interface Design", category: "Design & Creativity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design mobile app interface for [APP_PURPOSE]:\n- Screen flow diagram (10-15 screens)\n- Navigation
-    pattern\n- Component library needed\n- Gesture interactions\n- Loading states\n- Empty states\n- Error states\n-
-    Onboarding flow\n- Accessibility features\n- iOS and Android considerations\n- Design specs and
-    measurements\nInclude wireframes and high-fidelity mockup descriptions.`},
-
-            // ========== EDUCATION & LEARNING (55 prompts) ==========
-            {
-                id: 501, title: "Lesson Plan Builder", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a detailed lesson plan for teaching "[TOPIC]":\n- Grade level and student background\n- Learning
-    objectives (measurable outcomes)\n- Materials and resources needed\n- Warm-up/introduction activity\n- Main
-    instruction with examples\n- Practice activities (guided and independent)\n- Assessment methods\n- Differentiation
-    strategies\n- Homework assignment\n- Follow-up lesson connections\n- Time allocation per section\nInclude discussion
-    questions and example answers.`},
-
-            {
-                id: 502, title: "Study Guide Creator", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a comprehensive study guide for "[SUBJECT/CHAPTER]":\n- Key concepts summary\n- Vocabulary/definitions
-    (with context)\n- Important formulas or principles\n- Practice questions (multiple formats)\n- Common misconceptions
-    to avoid\n- Memory techniques/mnemonics\n- Chapter summary (1-2 pages)\n- Practice test (20-30 questions)\n- Answer
-    key with explanations\n- Video resource suggestions\n- Real-world application examples`},
-
-            {
-                id: 503, title: "Educational Video Script", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Write an educational video script about [TOPIC] for [AGE_GROUP]:\n- Hook (first 15 seconds)\n- Learning
-    objectives stated\n- Concept explanation (break complex into simple)\n- Visual aids descriptions\n- Examples and
-    demonstrations\n- Common mistakes to avoid\n- Practice problems\n- Summary and recap\n- Call-to-action\n- Duration:
-    [MINUTES]\nUse age-appropriate language and analogies.`},
-
-            {
-                id: 504, title: "Quiz Generator", category: "Education & Learning", model: "ChatGPT", difficulty: "Beginner",
-                text: `Generate a quiz on [TOPIC] with:\n- 20 questions total\n- Mix of question types:\n * 10 multiple choice (4
-    options each)\n * 5 true/false\n * 5 short answer\n- Difficulty progression (easy to hard)\n- Answer key with
-    explanations\n- Point values\n- Estimated completion time\n- Learning objectives covered\nAlign with [GRADE_LEVEL]
-    standards.`},
-
-            {
-                id: 505, title: "Course Curriculum Outline", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design a complete course curriculum for [COURSE_TOPIC]:\n- Course duration and format\n- Prerequisites\n-
-    Learning outcomes\n- Module breakdown (6-12 modules)\n- Lesson titles and objectives\n- Reading materials and
-    resources\n- Assignment types and frequency\n- Assessment methods\n- Grading rubric\n- Student engagement
-    strategies\n- Technology/tools required\nInclude suggested timeline.`},
-
-            {
-                id: 506, title: "Flashcard Set Creator", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a flashcard set for [SUBJECT]:\n- 50 flashcards\n- Front: Question/term/prompt\n- Back:
-    Answer/definition/explanation\n- Include:\n * Key vocabulary\n * Important concepts\n * Formulas/equations\n *
-    Historical dates/events\n * Examples\n- Difficulty levels indicated\n- Category tags\n- Spaced repetition
-    recommendations\nFormat for Anki/Quizlet import.`},
-
-            {
-                id: 507, title: "Homework Assignment Design", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Design a homework assignment for [TOPIC/LESSON]:\n- Clear instructions\n- Learning objectives reinforced\n-
-    Estimated completion time\n- Required materials\n- 5-10 problems/questions\n- Varying difficulty levels\n-
-    Real-world applications\n- Rubric/grading criteria\n- Parent guidance section\n- Extension activities for advanced
-    students\n- Modifications for struggling students`},
-
-            {
-                id: 508, title: "Interactive Activity Planner", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Plan an interactive classroom activity for [SUBJECT]:\n- Activity name and description\n- Learning
-    objectives\n- Group size and arrangements\n- Materials needed\n- Step-by-step instructions\n- Time allocation
-    (setup, activity, debrief)\n- Discussion questions\n- Assessment method\n- Variations for different learning
-    styles\n- Troubleshooting common issues\nMake it engaging and hands-on.`},
-
-            {
-                id: 509, title: "Educational Game Design", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design an educational game for learning [TOPIC]:\n- Game mechanics\n- Rules and objectives\n- Point
-    system/scoring\n- Player roles\n- Materials needed\n- Setup instructions\n- How to play (step-by-step)\n-
-    Discussion/debrief questions\n- Learning outcomes\n- Variations and difficulty levels\n- Suitable for
-    [AGE_GROUP]\nBalance fun and educational value.`},
-
-            {
-                id: 510, title: "Exam Preparation Guide", category: "Education & Learning", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create an exam preparation guide for [EXAM_NAME]:\n- Exam format and structure\n- Topic breakdown with
-    weightage\n- Week-by-week study schedule\n- Daily study goals\n- Practice resources\n- Test-taking strategies\n-
-    Time management tips\n- Stress management techniques\n- Last-week review plan\n- Day-before checklist\n- Morning-of
-    routine\nInclude motivational elements.`},
-
-            // ========== PERSONAL DEVELOPMENT (50 prompts) ==========
-            {
-                id: 601, title: "Resume Optimization", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Optimize a resume for [JOB_TITLE] position:\n- Keyword optimization for ATS\n- Achievement-focused bullet
-    points\n- Quantifiable results\n- Skills section organization\n- Experience section restructuring\n-
-    Summary/objective creation\n- Education section optimization\n- Additional sections (certifications, projects)\n-
-    Formatting best practices\n- Length and structure guidelines\nInclude before/after examples.`},
-
-            {
-                id: 602, title: "Interview Preparation Guide", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Prepare for a [JOB_TITLE] interview at [COMPANY]:\n- Company research checklist\n- Common interview questions
-    with model answers\n- STAR method framework (Situation, Task, Action, Result)\n- Technical questions to expect\n-
-    Behavioral questions strategy\n- Questions to ask the interviewer\n- Salary negotiation guidelines\n- Follow-up
-    email template\n- Mock interview scenarios\n- Interview day checklist\nInclude practice questions specific to the
-    role.`},
-
-            {
-                id: 603, title: "30-Day Goal Setting Plan", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Create a 30-day action plan to achieve "[GOAL]":\n- Goal breakdown into weekly milestones\n- Daily actionable
-    tasks\n- Potential obstacles and solutions\n- Accountability checkpoints (weekly review)\n- Progress tracking
-    method\n- Motivation strategies\n- Resource requirements\n- Success metrics\n- Habit building recommendations\n- Day
-    30 assessment and reflection prompts`},
-
-            {
-                id: 604, title: "Cover Letter Template", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Write a compelling cover letter for [POSITION] at [COMPANY]:\n- Research-based opening (mention company)\n-
-    Why you're interested (genuine passion)\n- 2-3 relevant achievements\n- Skills that match job requirements\n- What
-    you'll bring to the role\n- Call-to-action\n- Professional closing\n- Length: 250-400 words\n- Tone: Professional
-    but personable\nAvoid generic phrases.`},
-
-            {
-                id: 605, title: "LinkedIn Profile Optimization", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Optimize LinkedIn profile for [INDUSTRY/ROLE]:\n- Headline (120 chars, keyword-rich)\n- About section
-    (compelling story)\n- Experience descriptions (achievement-focused)\n- Skills section (top 50 skills for role)\n-
-    Recommendations strategy\n- Featured section content ideas\n- Activity and engagement plan\n- Profile photo
-    guidelines\n- Banner image suggestions\n- SEO optimization tips\nMake it recruiter-friendly.`},
-
-            {
-                id: 606, title: "Morning Routine Design", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Design an optimal morning routine for [LIFESTYLE/GOALS]:\n- Wake-up time recommendation\n- Hydration and
-    nutrition\n- Physical activity (type and duration)\n- Mindfulness/meditation\n- Planning/prioritization time\n-
-    Learning activity\n- Personal care\n- Commute optimization\n- Total routine duration: [MINUTES]\n- Customization for
-    weekdays vs weekends\nFocus on consistency and sustainability.`},
-
-            {
-                id: 607, title: "Habit Tracker System", category: "Personal Development", model: "ChatGPT", difficulty: "Beginner",
-                text: `Create a habit tracking system for [TIMEFRAME]:\n- Habits to track (5-10)\n- Daily checklist format\n- Weekly
-    review template\n- Success metrics\n- Motivation techniques\n- Streak tracking\n- Reward system\n- Recovery from
-    setbacks\n- Visual progress indicators\n- Monthly reflection questions\nDesign for long-term adherence.`},
-
-            {
-                id: 608, title: "Career Transition Plan", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Plan a career transition from [CURRENT_ROLE] to [TARGET_ROLE]:\n- Skills gap analysis\n- Learning roadmap\n-
-    Networking strategy\n- Experience building opportunities\n- Portfolio/projects needed\n- Timeline (3, 6, 12
-    months)\n- Financial planning\n- Resume repositioning\n- Interview preparation specific to transition\n- Mentorship
-    and resources\n- Contingency plans`},
-
-            {
-                id: 609, title: "Public Speaking Prep", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Prepare for a presentation on [TOPIC]:\n- Audience analysis\n- Speech structure (intro, body, conclusion)\n-
-    Opening hook ideas\n- Key messages (3-5 main points)\n- Visual aids recommendations\n- Rehearsal schedule\n- Anxiety
-    management techniques\n- Q&A preparation\n- Body language tips\n- Voice modulation practice\n- Time management\n-
-    Feedback incorporation`},
-
-            {
-                id: 610, title: "Personal Branding Strategy", category: "Personal Development", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Develop a personal brand strategy for [INDUSTRY]:\n- Brand positioning statement\n- Unique value
-    proposition\n- Target audience definition\n- Content pillars (3-5 themes)\n- Platform strategy\n- Content calendar
-    (30 days)\n- Visual identity guidelines\n- Thought leadership topics\n- Networking approach\n- Measurement
-    metrics\n- Growth milestones\n- Authenticity guidelines`},
-
-            // Adding more prompts to reach 500+ total
-            // ... (In production, this would continue with many more prompts)
-
-            // For brevity, I'll add a few more diverse examples across categories
-
-            {
-                id: 701, title: "Python Function Documenter", category: "Software Development", model: "ChatGPT", difficulty:
-                    "Beginner",
-                text: `Write comprehensive documentation for Python function:\n- Function signature\n- Description (what it does)\n-
-    Parameters (with types and descriptions)\n- Return value (type and description)\n- Raises (exceptions)\n- Examples
-    (2-3 use cases)\n- Time complexity\n- Space complexity\n- Edge cases\n- Related functions\nUse Google or NumPy
-    docstring style.`},
-
-            {
-                id: 702, title: "Instagram Reel Ideas", category: "Content Creation", model: "ChatGPT", difficulty: "Beginner",
-                text: `Generate 15 Instagram Reel ideas for [NICHE]:\n- Hook concepts\n- Trending audio matches\n- Visual
-    concepts\n- Text overlay ideas\n- Hashtag strategies\n- Engagement hooks\n- Duration: 15-30 seconds\n-
-    Call-to-action\nBalance entertainment and value.`},
-
-            {
-                id: 703, title: "Pricing Strategy Model", category: "Business & Productivity", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Develop pricing strategy for [PRODUCT/SERVICE]:\n- Cost analysis\n- Competitor pricing research\n-
-    Value-based pricing calculation\n- Tiered pricing model (if applicable)\n- Discount strategy\n- Psychological
-    pricing tactics\n- Price testing plan\n- Revenue projections\n- Positioning strategy\nJustify recommendations with
-    data.`},
-
-            {
-                id: 704, title: "3D Render Prompt", category: "Design & Creativity", model: "Midjourney", difficulty: "Advanced",
-                text: `Create Midjourney prompt for 3D product render:\n"Professional 3D render of [PRODUCT], [material
-    description], [lighting setup], studio photography, octane render, 8K resolution, [color scheme], [background],
-    commercial photography, photorealistic --ar 1:1 --v 5 --q 2"\n\nProvide 3 variations:\n- Different lighting\n-
-    Different angles\n- Different contexts`},
-
-            {
-                id: 705, title: "Math Problem Solver", category: "Education & Learning", model: "ChatGPT", difficulty: "Advanced",
-                text: `Solve math problem with step-by-step explanation:\nProblem: [PROBLEM_STATEMENT]\n\nProvide:\n- Identify
-    problem type\n- List known variables\n- Show each calculation step\n- Explain reasoning\n- Check answer\n-
-    Alternative methods\n- Common mistakes to avoid\n- Related practice problems\nUse clear mathematical notation.`},
-
-            {
-                id: 706, title: "Meditation Script", category: "Personal Development", model: "ChatGPT", difficulty: "Beginner",
-                text: `Write a guided meditation script for [PURPOSE]:\n- Duration: [MINUTES]\n- Opening (settling in)\n- Breathing
-    instructions\n- Body scan or visualization\n- Core meditation theme\n- Mindful awareness\n- Positive affirmations\n-
-    Gradual return\n- Closing\nUse calming, present-tense language.`},
-
-            {
-                id: 707, title: "Email Marketing Sequence", category: "Marketing & Sales", model: "ChatGPT", difficulty:
-                    "Advanced",
-                text: `Design 7-day email sequence for [GOAL]:\nDay 1: Welcome + immediate value\nDay 2: Story + problem
-    awareness\nDay 3: Solution introduction\nDay 4: Social proof + testimonials\nDay 5: Overcome objections\nDay 6:
-    Bonus/scarcity\nDay 7: Final CTA + urgency\n\nFor each email:\n- Subject line\n- Preview text\n- Body copy\n- CTA\n-
-    Send time`},
-
-            {
-                id: 708, title: "Accessibility Audit", category: "Software Development", model: "ChatGPT", difficulty: "Advanced",
-                text: `Conduct accessibility audit for [WEBSITE/APP]:\n- WCAG 2.1 Level AA compliance\n- Color contrast ratios\n-
-    Keyboard navigation\n- Screen reader compatibility\n- ARIA labels and roles\n- Form accessibility\n- Image alt
-    text\n- Video captions\n- Focus indicators\n- Error identification\nProvide prioritized fixes.`},
-
-            {
-                id: 709, title: "Book Summary Template", category: "Content Creation", model: "ChatGPT", difficulty:
-                    "Intermediate",
-                text: `Create a comprehensive book summary for [BOOK_TITLE]:\n- Key thesis/main idea\n- Chapter-by-chapter
-    breakdown\n- Main concepts and frameworks\n- Actionable takeaways (10-15)\n- Memorable quotes (5-10)\n- Author
-    background\n- Target audience\n- Pros and cons\n- Rating and recommendation\n- Related book suggestions\n1500-2000
-    words total.`},
-
-            {
-                id: 710, title: "Negotiation Strategy", category: "Personal Development", model: "ChatGPT", difficulty: "Advanced",
-                text: `Develop negotiation strategy for [SCENARIO]:\n- Research and preparation checklist\n- BATNA (Best Alternative
-    To Negotiated Agreement)\n- Opening position\n- Target outcome\n- Minimum acceptable outcome\n- Concession
-    strategy\n- Objection responses\n- Psychological tactics\n- Body language tips\n- Closing techniques\n-
-    Post-negotiation follow-up`}
-        ];
-
-        // ============================================
-        // APP STATE
-        // ============================================
-
-        let allPrompts = PROMPTS_DATA;
-        let filteredPrompts = PROMPTS_DATA;
-        let currentModal = null;
-        let categories = [...new Set(PROMPTS_DATA.map(p => p.category))];
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-
-        document.addEventListener('DOMContentLoaded', function () {
-            populateCategoryFilter();
-            updateStats();
-            renderPrompts();
-            attachEventListeners();
-        });
-
-        function populateCategoryFilter() {
-            const categoryFilter = document.getElementById('category-filter');
-            categories.forEach(cat => {
-                const option = document.createElement('option');
-                option.value = cat;
-                option.textContent = cat;
-                categoryFilter.appendChild(option);
-            });
-        }
-
-        function updateStats() {
-            document.getElementById('total-prompts').textContent = PROMPTS_DATA.length;
-            document.getElementById('total-categories').textContent = categories.length;
-        }
-
-        function attachEventListeners() {
-            document.getElementById('search-input').addEventListener('input', applyFilters);
-            document.getElementById('category-filter').addEventListener('change', applyFilters);
-            document.getElementById('model-filter').addEventListener('change', applyFilters);
-            document.getElementById('difficulty-filter').addEventListener('change', applyFilters);
-
-            // Close modal on outside click
-            window.addEventListener('click', function (e) {
-                const modal = document.getElementById('prompt-modal');
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && currentModal) {
-                    closeModal();
-                }
-            });
-        }
-
-        // ============================================
-        // FILTERING & SEARCH
-        // ============================================
-
-        function applyFilters() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const categoryFilter = document.getElementById('category-filter').value;
-            const modelFilter = document.getElementById('model-filter').value;
-            const difficultyFilter = document.getElementById('difficulty-filter').value;
-
-            filteredPrompts = allPrompts.filter(prompt => {
-                const matchesSearch = searchTerm === '' ||
-                    prompt.title.toLowerCase().includes(searchTerm) ||
-                    prompt.text.toLowerCase().includes(searchTerm) ||
-                    prompt.category.toLowerCase().includes(searchTerm);
-                const matchesCategory = !categoryFilter || prompt.category === categoryFilter;
-                const matchesModel = !modelFilter || prompt.model === modelFilter;
-                const matchesDifficulty = !difficultyFilter || prompt.difficulty === difficultyFilter;
-
-                return matchesSearch && matchesCategory && matchesModel && matchesDifficulty;
-            });
-
-            updateResultsInfo();
-            renderPrompts();
-        }
-
-        function updateResultsInfo() {
-            const info = document.getElementById('results-info');
-            const count = filteredPrompts.length;
-            info.textContent = `Found ${count} prompt${count !== 1 ? 's' : ''}`;
-        }
-
-        // ============================================
-        // RENDERING
-        // ============================================
-
-        function renderPrompts() {
-            const container = document.getElementById('prompts-container');
-            const emptyState = document.getElementById('empty-state');
-
-            if (filteredPrompts.length === 0) {
-                container.innerHTML = '';
-                emptyState.style.display = 'block';
-                return;
-            }
-
-            emptyState.style.display = 'none';
-            container.innerHTML = filteredPrompts.map(prompt => `
-    <div class="prompt-card">
-        <div class="prompt-category">${prompt.category}</div>
-        <div class="prompt-title">${prompt.title}</div>
-        <div class="prompt-text">${prompt.text.substring(0, 150)}...</div>
-        <div class="prompt-meta">
-            <span>▪ ${prompt.model}</span>
-            <span>◊ ${prompt.difficulty}</span>
-        </div>
-        <div class="prompt-actions">
-            <button class="btn btn-copy" onclick="copyPrompt(${prompt.id})">▸ Copy</button>
-            <button class="btn btn-view" onclick="viewPrompt(${prompt.id})">○ View</button>
-        </div>
+  </main>
+
+  <!-- CATEGORIES EXPLAINER -->
+  <section id="categorias" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <h2 class="font-display font-bold text-2xl">Categorías</h2>
+    <p class="text-slate-500 text-sm mt-1">8 verticales curados para trabajo real.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal"><div class="text-2xl">📣</div><div class="font-semibold mt-2">Marketing & Sales</div><div class="text-sm text-slate-500">Social, ads, email, launch.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:80ms"><div class="text-2xl">💼</div><div class="font-semibold mt-2">Business</div><div class="text-sm text-slate-500">OKR, pitch, SOP, finanzas.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:140ms"><div class="text-2xl">✍️</div><div class="font-semibold mt-2">Content</div><div class="text-sm text-slate-500">Blog, video, podcast, newsletter.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:200ms"><div class="text-2xl">💻</div><div class="font-semibold mt-2">Dev</div><div class="text-sm text-slate-500">React, SQL, API, Docker.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal"><div class="text-2xl">🎨</div><div class="font-semibold mt-2">Design</div><div class="text-sm text-slate-500">Midjourney, Flux, Runway.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:80ms"><div class="text-2xl">📚</div><div class="font-semibold mt-2">Education</div><div class="text-sm text-slate-500">Clases, quizzes, cursos.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:140ms"><div class="text-2xl">🌱</div><div class="font-semibold mt-2">Personal</div><div class="text-sm text-slate-500">CV, entrevistas, hábitos.</div></div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 reveal" style="transition-delay:200ms"><div class="text-2xl">📊</div><div class="font-semibold mt-2">Data & Analytics</div><div class="text-sm text-slate-500">SQL, dashboards, EDA.</div></div>
     </div>
-    `).join('');
-        }
+  </section>
 
-        // ============================================
-        // ACTIONS
-        // ============================================
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-slate-500">
+      <span>© 2026 PromptFlow — Hecho con ♥ para makers. 100% local, sin tracking.</span>
+      <span class="inline-flex gap-2"><span class="px-2.5 py-1 rounded-full bg-slate-900 text-white text-xs font-bold">Vite + Tailwind</span><span class="px-2.5 py-1 rounded-full border border-slate-200">SPA offline-ready</span></span>
+    </div>
+  </footer>
 
-        function copyPrompt(promptId) {
-            const prompt = PROMPTS_DATA.find(p => p.id === promptId);
-            if (!prompt) return;
+  <!-- Modal -->
+  <div id="prompt-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div id="modal-backdrop" class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-[20px] max-w-[760px] w-full max-h-[85vh] overflow-hidden shadow-2xl flex flex-col">
+      <div class="p-6 border-b border-slate-200 flex items-start justify-between gap-4">
+        <div>
+          <div id="modal-meta" class="flex flex-wrap gap-2 text-xs"></div>
+          <h2 id="modal-title" class="font-display font-bold text-xl mt-2"></h2>
+        </div>
+        <button id="modal-close" class="w-9 h-9 grid place-items-center rounded-xl bg-slate-100 hover:bg-slate-200 transition">✕</button>
+      </div>
+      <div id="modal-text" class="p-6 overflow-auto text-[15px] leading-7 whitespace-pre-wrap bg-slate-50 m-4 rounded-xl border border-slate-200 font-mono text-slate-800"></div>
+      <div class="p-4 border-t border-slate-200 flex gap-3">
+        <button id="modal-copy" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-xl font-semibold transition">▸ Copiar prompt</button>
+        <button id="modal-fav" class="px-4 py-3 rounded-xl border-2 border-slate-200 bg-white font-semibold hover:border-pink-300 transition">♡ Favorito</button>
+        <button id="modal-close-2" class="px-4 py-3 rounded-xl bg-slate-900 text-white font-semibold">Cerrar</button>
+      </div>
+    </div>
+  </div>
 
-            navigator.clipboard.writeText(prompt.text).then(() => {
-                // Visual feedback
-                const buttons = document.querySelectorAll('.btn-copy');
-                buttons.forEach(btn => {
-                    if (btn.onclick.toString().includes(promptId)) {
-                        btn.classList.add('copied');
-                        btn.textContent = '✅ Copied!';
-                        setTimeout(() => {
-                            btn.classList.remove('copied');
-                            btn.textContent = '📋 Copy';
-                        }, 2000);
-                    }
-                });
-            }).catch(err => {
-                alert('Failed to copy. Please try again.');
-                console.error('Copy failed:', err);
-            });
-        }
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 hidden">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-medium flex items-center gap-2">
+      <span id="toast-icon">✅</span><span id="toast-msg">Copiado</span>
+    </div>
+  </div>
 
-        function viewPrompt(promptId) {
-            const prompt = PROMPTS_DATA.find(p => p.id === promptId);
-            if (!prompt) return;
-
-            document.getElementById('modal-title').textContent = prompt.title;
-            document.getElementById('modal-text').textContent = prompt.text;
-            document.getElementById('prompt-modal').classList.add('active');
-            currentModal = prompt.id;
-        }
-
-        function closeModal() {
-            document.getElementById('prompt-modal').classList.remove('active');
-            currentModal = null;
-        }
-
-        function copyFromModal() {
-            const text = document.getElementById('modal-text').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('✅ Prompt copied to clipboard!');
-                closeModal();
-            }).catch(err => {
-                alert('Failed to copy. Please try again.');
-                console.error('Copy failed:', err);
-            });
-        }
-
-        function sortBy(type) {
-            // Update active button
-            document.querySelectorAll('.btn-toolbar').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            if (type === 'newest') {
-                filteredPrompts.sort((a, b) => b.id - a.id);
-            } else if (type === 'popular') {
-                filteredPrompts.sort((a, b) => a.id - b.id);
-            }
-            renderPrompts();
-        }
-
-        function exportAll() {
-            const csv = filteredPrompts.map(p => {
-                const title = p.title.replace(/"/g, '""');
-                const category = p.category.replace(/"/g, '""');
-                const model = p.model.replace(/"/g, '""');
-                const difficulty = p.difficulty.replace(/"/g, '""');
-                const text = p.text.replace(/"/g, '""').replace(/\n/g, ' ');
-                return `"${title}","${category}","${model}","${difficulty}","${text}"`;
-            }).join('\n');
-
-            const header = '"Title","Category","AI Model","Difficulty","Prompt Text"\n';
-            const fullCSV = header + csv;
-
-            const blob = new Blob([fullCSV], { type: 'text/csv;charset=utf-8;' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `promptflow-prompts-${new Date().toISOString().split('T')[0]}.csv`;
-            link.click();
-            window.URL.revokeObjectURL(url);
-        }
-    </script>
+  <script type="module" src="/src/main.js"></script>
 </body>
-
 </html>

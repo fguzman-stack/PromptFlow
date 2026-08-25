@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-[#f8fafc] text-slate-900 antialiased; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-100; }
+  ::-webkit-scrollbar-thumb { @apply bg-indigo-500 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-indigo-600; }
+}
+
+@layer components {
+  .glass { @apply bg-white/10 backdrop-blur-xl border border-white/20; }
+  .card-hover { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-300; }
+  .shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+}
+
+/* Custom animations */
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes blob { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,-30px) scale(1.05); } 66% { transform: translate(-20px,20px) scale(0.95); } }
+.animate-blob { animation: blob 10s infinite; }
+.animation-delay-2000 { animation-delay: -2s; }
+.animation-delay-4000 { animation-delay: -4s; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* Tooltip */
+.tooltip { @apply invisible opacity-0 absolute -top-9 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap transition pointer-events-none; }
+.has-tooltip:hover .tooltip { @apply visible opacity-100; }
+
+/* Focus ring */
+*:focus-visible { @apply outline-none ring-2 ring-indigo-500 ring-offset-2; }

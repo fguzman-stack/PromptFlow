@@ -1,0 +1,19 @@
+{
+  "name": "promptflow",
+  "version": "2.0.0",
+  "description": "PromptFlow — Premium AI Prompt Library with 500+ prompts for 15+ AI models",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["ai", "prompts", "prompt-engineering", "chatgpt", "claude", "midjourney", "vite", "tailwind"],
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "tailwindcss": "^3.4.10",
+    "postcss": "^8.4.40",
+    "autoprefixer": "^10.4.20"
+  }
+}
